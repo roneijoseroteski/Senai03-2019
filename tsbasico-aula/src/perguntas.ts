@@ -35,13 +35,13 @@ export class Perguntas {
                     message:'Digite seu numero de telefone: ',
                 },{
                     name:'tamanho',
-                    type:'input',
+                    type:'list',
                     message:'Qual o tamanho da pizza: ',
                     choices:['Piquena', 'Média', 'Grande'],
                 },
                 {
                     name:'sabor',
-                    type:'input',
+                    type:'list',
                     message:'Digite o sabor da Pizza: ',
                     choices:['catupiri', 'calabresa', 'alho e olio', 'quatro queijos', 'california', 'portuguesa','bahiana']
                 },
@@ -117,17 +117,17 @@ export class Perguntas {
         )
     }
     public relatorio(){
-        console.log(`\nNome ${this.dadosDoPedido.name}!\n`);
-        console.log(`\nTelefone ${this.dadosDoPedido.telefone}!\n`);
-        console.log(`\nTamanho ${this.dadosDoPedido.tamanho}!\n`);
-        console.log(`\nSabor ${this.dadosDoPedido.sabor}!\n`);
-        console.log(`\nQuantidade ${this.dadosDoPedido.quantidade}!\n`);
+        console.log(`Nome ${this.dadosDoPedido.name}!`);
+        console.log(`Telefone ${this.dadosDoPedido.telefone}!`);
+        console.log(`Tamanho ${this.dadosDoPedido.tamanho}!`);
+        console.log(`Sabor ${this.dadosDoPedido.sabor}!`);
+        console.log(`Quantidade ${this.dadosDoPedido.quantidade}!`);
        if (this.dadosDaEntrega !== null){
-           console.log(`\nCidade ${this.dadosDaEntrega.cidade}!`);
-           console.log(`\nBairro ${this.dadosDaEntrega.bairro}!`);
-           console.log(`\nRua ${this.dadosDaEntrega.rua}!`);
-           console.log(`\nNumero da residencia ${this.dadosDaEntrega.numero}!`);
-           console.log(`\nComplemento ${this.dadosDaEntrega.complemento}!`);
+           console.log(`Cidade ${this.dadosDaEntrega.cidade}!`);
+           console.log(`Bairro ${this.dadosDaEntrega.bairro}!`);
+           console.log(`Rua ${this.dadosDaEntrega.rua}!`);
+           console.log(`Numero da residencia ${this.dadosDaEntrega.numero}!`);
+           console.log(`Complemento ${this.dadosDaEntrega.complemento}!`);
 
        }  
     }
