@@ -1,11 +1,5 @@
-import {OlaMundo} from './olamundo';
-import { Perguntas } from './perguntas';
-import { Pedidos } from './pedidos';
 
-
-new OlaMundo().run();
-
-new Perguntas().pessoalInfoPedido();
+import { Pedidos } from './pedidos'
 
 
 new Pedidos().ChamarPedido();
