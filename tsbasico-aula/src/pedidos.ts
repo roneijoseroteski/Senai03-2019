@@ -1,8 +1,20 @@
 import {prompt} from 'inquirer';
+import {VpHttp} from './http/vphttp';
 
 export class Pedidos {
     private dadosDoPedido : any = null;
     private dadosDaEntrega : any = null;
+
+    public getSabores(){
+        new VpHttp('http://5c64a102c969210014a32ee8.mockapi.io/tamanhos').get().subscribe(
+            (data : any) => {
+                console.log(data);
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
 
     public ChamarPedido(){
         this.pessoalInfoPedido();

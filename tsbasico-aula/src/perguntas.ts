@@ -1,9 +1,11 @@
 import {prompt} from 'inquirer';
 
+
 export class Perguntas {
    private dadosDoPedido : any = null;
    private dadosDaEntrega : any = null;
-
+   
+   
     public facaUmaPergunta(){
         prompt(
             [

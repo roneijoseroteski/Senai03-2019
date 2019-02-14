@@ -1,4 +1,4 @@
 import {Pedidos} from './pedidos';
 
 
-new Pedidos().ChamarPedido();
+new Pedidos().getSabores();
