@@ -201,7 +201,12 @@ export class Pedidos {
            console.log(`Numero da residencia ${this.dadosDaEntrega.numero}!`);
            console.log(`Complemento ${this.dadosDaEntrega.complemento}!`);
 
-       }  
+       } 
+       
+       this.dadosDoPedido.dadosDaEntrega = this.dadosDaEntrega;
+
+       console.log(JSON.stringify(this.dadosDoPedido));
+
     }
 
 }
