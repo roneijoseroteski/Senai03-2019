@@ -37,7 +37,9 @@ export class Pedidos {
             (data : any) => {
                 // console.log(data);
                 data.forEach((element : any) => {
-                    this.sabores.push(element.Sabor);
+                    if(element.disponível === true){
+                        this.sabores.push(element.Sabor);
+                    }
                 });
                 // this.sabores = data;
                 this.getCidades();
