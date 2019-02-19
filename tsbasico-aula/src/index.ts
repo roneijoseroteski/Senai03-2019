@@ -1,4 +1,4 @@
 import {Pedidos} from './pedidos';
 
 
-new Pedidos().getSabores();
+new Pedidos().getTamanhos();

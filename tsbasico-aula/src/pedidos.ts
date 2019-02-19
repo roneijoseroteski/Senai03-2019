@@ -1,20 +1,87 @@
 import {prompt} from 'inquirer';
 import {VpHttp} from './http/vphttp';
+import {Tamanho} from './interface';
 
 export class Pedidos {
     private dadosDoPedido : any = null;
     private dadosDaEntrega : any = null;
+    private tamanhos : any[] = [];
+    private sabores : any[] = [];
+    private cidades : any[] = [];
+    private bairos : any[] = [];
 
-    public getSabores(){
+    public getTamanhos(){
+        
+
         new VpHttp('http://5c64a102c969210014a32ee8.mockapi.io/tamanhos').get().subscribe(
             (data : any) => {
-                console.log(data);
+                data.forEach((element : any) => {
+                    this.tamanhos.push(element.tamanho);
+                });
+               // this.tamanhos = data;
+                //console.log(JSON.stringify(this.tamanhos));
+                this.getSabores();
+                /*data.forEach((element : Tamanho) => {
+                  console.log(element.tamanho);  
+                });*/
+               // console.log(JSON.stringify(data));
             },
             (error : any) => {
                 console.log(error);
             }
         );
     }
+
+    public getSabores(){
+        new VpHttp('http://5c64a102c969210014a32ee8.mockapi.io/sabor').get().subscribe(
+            (data : any) => {
+                // console.log(data);
+                data.forEach((element : any) => {
+                    this.sabores.push(element.Sabor);
+                });
+                // this.sabores = data;
+                this.getCidades();
+
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
+    public getCidades(){
+        new VpHttp('http://5c64a102c969210014a32ee8.mockapi.io/cidades').get().subscribe(
+            (data : any) => {
+                data.forEach((element : any) => {
+                    this.cidades.push(element.cidades);
+                });
+                // this.cidades = data;
+                this.getBairos();
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        )
+    }
+    public getBairos(){
+        new VpHttp('http://5c64a102c969210014a32ee8.mockapi.io/bairos').get().subscribe(
+            (data : any) => {
+                data.forEach((element : any) => {
+                    this.bairos.push(element.bairos);
+                });
+                // this.bairos= data;
+
+                // console.log(JSON.stringify(this.sabores));
+                // console.log(JSON.stringify(this.tamanhos));
+                // console.log(JSON.stringify(this.cidades));
+                // console.log(JSON.stringify(this.bairos));
+                this.ChamarPedido();
+            },
+            (error : any) =>{
+                console.log(error);
+            }
+        )
+    }
+  
 
     public ChamarPedido(){
         this.pessoalInfoPedido();
@@ -36,13 +103,14 @@ export class Pedidos {
                     name:'tamanho',
                     type:'list',
                     message:'Qual o tamanho da pizza: ',
-                    choices:['Piquena', 'Média', 'Grande'],
+                    choices:this.tamanhos,
+                    
                 },
                 {
                     name:'sabor',
                     type:'list',
                     message:'Digite o sabor da Pizza: ',
-                    choices:['catupiri', 'calabresa', 'alho e olio', 'quatro queijos', 'california', 'portuguesa','bahiana']
+                    choices:this.sabores,
                 },
                 {
                     name:'quantidade',
@@ -79,14 +147,17 @@ export class Pedidos {
             [
                 {
                     name:'cidade',
-                    type:'input',
+                    type:'list',
                     message:'Qual a cidade: ',
+                    choices:this.cidades,
+
 
                 },
                 {
                     name:'bairro',
-                    type:'input',
+                    type:'list',
                     message:'Qual seu bairro: ',
+                    choices:this.bairos,
 
                 },
                 {
