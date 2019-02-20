@@ -1,4 +1,4 @@
-import {Pedidos} from './pedidos';
+import {Produtos} from './produtos';
 
 
-new Pedidos().getTamanhos();
+new Produtos().getCategorias();
