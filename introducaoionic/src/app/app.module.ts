@@ -11,6 +11,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Messages } from '../providers/menssages';
 import { Toast } from '../providers/toast';
+import { HttpProvider } from '../providers/http';
+import { Login } from '../providers/login';
 
 import { PaginaRPage } from '../pages/pagina-r/pagina-r';
 @NgModule({
@@ -36,6 +38,8 @@ import { PaginaRPage } from '../pages/pagina-r/pagina-r';
     SplashScreen,
     Messages,
     Toast,
+    Login,
+    HttpProvider,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

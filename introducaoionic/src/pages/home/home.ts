@@ -2,7 +2,8 @@ import { Component  } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Messages } from '../../providers/menssages';
 import { Toast } from '../../providers/toast';
-import { PaginaRPage } from '../pagina-r/pagina-r';
+// import { PaginaRPage } from '../pagina-r/pagina-r';
+import { Login } from '../../providers/login';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HomePage {
   public exibirconteudo : boolean = true;
   public listaAlunos = [];
 
-  constructor(public navCtrl: NavController, private messages : Messages, private toast : Toast) {
+  constructor(public navCtrl: NavController, private messages : Messages, private toast : Toast, private logar : Login) {
 
   }
   public adicionarAlunos(){
@@ -28,9 +29,13 @@ export class HomePage {
   }
   logform(){
     // debugger;
-    if(this.usuario === "ronei" && this.pass === "1234" ){
+    if(this.usuario === "admin@senai" && this.pass === "1234" ){
       // this.navCtrl.push(PaginaRPage);
-      this.navCtrl.setRoot(PaginaRPage);
+      // this.navCtrl.setRoot(PaginaRPage);
+      
+      let resultado = this.logar.login(this.usuario,this.pass);
+      console.log(resultado);
+
     }else{
       this.toast.presentToast("Conta invalida", 5000);
     }
