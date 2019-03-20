@@ -4,7 +4,7 @@ import { HttpProvider } from '../providers/http';
 
 @Injectable()
 export class Login{
-    url : "http://104.196.102.231/logon";
+    url = "http://104.196.102.231/logon";
 
 
     constructor(private httpProvider : HttpProvider){
@@ -12,7 +12,8 @@ export class Login{
         
     
     public login (userName: string, password : string){
-        debugger;
+        // console.log(userName,password);
+        // debugger;
         let obj = {
             userName : userName,
             password : password
@@ -22,9 +23,10 @@ export class Login{
 
         this.httpProvider.url = this.url;
 
-        return this.httpProvider.post(obj).subscribe(
-            this
-        );
+        return this.httpProvider.post(obj)
+               
+            
+        
 
     }
 }

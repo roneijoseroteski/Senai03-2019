@@ -13,6 +13,20 @@
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content padding>
+  <button ion-button primary (click)="buttonclick()">teste</button>
+
+  <div *ngIf="exibirconteudo" >
+    <ion-list>
+      <ion-item >
+        <ion-label>tamanho</ion-label>
+          <ion-select >
+            <ion-option value="{{tamanho.name}}" *ngFor="let tamanho of listaTamanhos">{{tamanho.name}}</ion-option>
+          </ion-select>
+        
+
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

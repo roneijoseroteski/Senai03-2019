@@ -15,6 +15,9 @@ import { HttpProvider } from '../providers/http';
 import { Login } from '../providers/login';
 
 import { PaginaRPage } from '../pages/pagina-r/pagina-r';
+import { Http, HttpModule ,Headers, Response} from '@angular/http';
+
+import { Tamanho } from '../providers/tamanhos';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,6 +26,7 @@ import { PaginaRPage } from '../pages/pagina-r/pagina-r';
     PaginaRPage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -38,8 +42,9 @@ import { PaginaRPage } from '../pages/pagina-r/pagina-r';
     SplashScreen,
     Messages,
     Toast,
-    Login,
     HttpProvider,
+    Login,
+    Tamanho,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

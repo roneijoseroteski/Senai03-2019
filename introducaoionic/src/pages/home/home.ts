@@ -2,7 +2,7 @@ import { Component  } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Messages } from '../../providers/menssages';
 import { Toast } from '../../providers/toast';
-// import { PaginaRPage } from '../pagina-r/pagina-r';
+import { PaginaRPage } from '../pagina-r/pagina-r';
 import { Login } from '../../providers/login';
 
 
@@ -13,6 +13,9 @@ import { Login } from '../../providers/login';
 export class HomePage {
   usuario : string;
   pass : string;
+  token : string;
+  user : string;
+  senha : string;
 
   public exibirconteudo : boolean = true;
   public listaAlunos = [];
@@ -28,17 +31,29 @@ export class HomePage {
     this.listaAlunos.push({name :"Aluno E"});
   }
   logform(){
-    // debugger;
-    if(this.usuario === "admin@senai" && this.pass === "1234" ){
+   
+    // if(this.usuario === "admin@senai" && this.pass === "1234" ){
       // this.navCtrl.push(PaginaRPage);
       // this.navCtrl.setRoot(PaginaRPage);
       
-      let resultado = this.logar.login(this.usuario,this.pass);
-      console.log(resultado);
+      this.logar.login(this.usuario,this.pass).subscribe(
+      (resultado : any) => {
+        this.token = resultado.token,
+        this.user = resultado.userName,
+        this.senha = resultado.password,
+        // console.log(resultado);
+        this.navCtrl.setRoot(PaginaRPage);
 
-    }else{
-      this.toast.presentToast("Conta invalida", 5000);
-    }
+      },
+      (error : any) => {
+        console.log(error);
+        this.toast.presentToast("Conta invalida", 5000);
+      }
+      );
+
+    // }else{
+    //   this.toast.presentToast("Conta invalida", 5000);
+    // }
 
   }
 
