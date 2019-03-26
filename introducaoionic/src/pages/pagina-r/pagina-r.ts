@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Tamanho } from '../../providers/tamanhos';
+import { Sabores } from '../../providers/sabores';
 
 /**
  * Generated class for the PaginaRPage page.
@@ -17,20 +18,33 @@ import { Tamanho } from '../../providers/tamanhos';
 export class PaginaRPage {
   public exibirconteudo : boolean = true;
   public listaTamanhos = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private tamanhoPizza : Tamanho) {
+  public listaSaboreePrecos = [];
+  idProduto : string;
+
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private tamanhoPizza : Tamanho, private sabor : Sabores) {
     this.adicionarPizza();
   }
 
   public adicionarPizza(){
     this.tamanhoPizza.tamanhos().subscribe(
       (resultado : any) => {
-        debugger;
+        // debugger;
         
         this.listaTamanhos = resultado;
         
       }
     )
    
+  }
+  clicar(){
+    this.sabor.saboreseprecos(this.idProduto).subscribe(
+      (saboreando : any) => {
+        this.listaSaboreePrecos = saboreando;
+      }
+    )
+
   }
 
   buttonclick(){

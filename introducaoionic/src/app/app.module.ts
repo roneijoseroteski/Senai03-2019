@@ -16,6 +16,7 @@ import { Login } from '../providers/login';
 
 import { PaginaRPage } from '../pages/pagina-r/pagina-r';
 import { Http, HttpModule ,Headers, Response} from '@angular/http';
+import { Sabores } from '../providers/sabores';
 
 import { Tamanho } from '../providers/tamanhos';
 @NgModule({
@@ -45,6 +46,7 @@ import { Tamanho } from '../providers/tamanhos';
     HttpProvider,
     Login,
     Tamanho,
+    Sabores,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
