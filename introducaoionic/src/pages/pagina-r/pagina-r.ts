@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Tamanho } from '../../providers/tamanhos';
 import { Sabores } from '../../providers/sabores';
+import { EntregainfoPage } from '../entregainfo/entregainfo';
 
 /**
  * Generated class for the PaginaRPage page.
@@ -17,6 +18,7 @@ import { Sabores } from '../../providers/sabores';
 })
 export class PaginaRPage {
   public exibirconteudo : boolean = true;
+
   public listaTamanhos = [];
   public listaSaboreePrecos = [];
   idProduto : string;
@@ -50,6 +52,10 @@ export class PaginaRPage {
   buttonclick(){
     
     this.exibirconteudo = !this.exibirconteudo;
+  }
+
+  telaEntrega(){
+    this.navCtrl.push(EntregainfoPage);
   }
 
 }
