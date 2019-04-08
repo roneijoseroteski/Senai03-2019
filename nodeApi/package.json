@@ -1,0 +1,16 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yes",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ronei",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "express": "^4.16.4",
+    "typescript": "^3.4.2"
+  }
+}
