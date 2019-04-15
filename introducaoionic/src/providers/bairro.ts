@@ -9,7 +9,7 @@ export class Bairro {
 
     public PegarBairro(idCidade : string){
 
-        let urlBairro = 'http://104.196.102.231/bairros/' + idCidade;
+        let urlBairro = 'http://localhost:3000/bairros/' + idCidade;
 
         this.httpProvider.url = urlBairro;
 

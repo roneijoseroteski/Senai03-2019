@@ -10,7 +10,7 @@ export class Tamanho{
     constructor(private httpProvider : HttpProvider){
 
     }
-    url = "http://104.196.102.231/tamanhos";
+    url = "http://localhost:3000/tamanhos";
 
     public tamanhos (){
         this.httpProvider.url = this.url;

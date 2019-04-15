@@ -7,11 +7,11 @@ export class Cidade {
     constructor( private httpProvider : HttpProvider){
 
     }
-    urlCidade = 'http://104.196.102.231/cidades';
-    
+    urlCidade = 'http://localhost:3000/cidades';
+
 
     public PegarCidade(){
-        
+
 
 
         this.httpProvider.url = this.urlCidade;

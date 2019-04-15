@@ -15,25 +15,112 @@ const port: number = 3000;
 // app.get('/teste', function (req, res) {
 //     res.send('Ola Mundo e Professor querido!');
 //   });
-app.get('/tamanhos/:idsabor', (req,res,next) =>{
+app.get('/tamanhos', (req,res,next) =>{
     // res.send({
-        let sabor : any = [];
-        if(req.params.idsabor === 1){
-            sabor.push({
-                id:1,
-                name:"Pequena",
-                quantidade_sabores: 1
+        let tamanho : any = [];
+        
+            tamanho.push({
+                "id":1,
+                "name":"Pequena",
+                "quantidade_sabores": 1
             },
             {
-                id:1,
-                name:"Media",
-                quantidade_sabores: 2
+                "id":1,
+                "name":"Média",
+                "quantidade_sabores": 2
 
             },
             {
-                id:1,
-                name:"Grande",
-                quantidade_sabores: 3
+                "id":1,
+                "name":"Grande",
+                "quantidade_sabores": 3
+            }
+
+            )
+
+        
+        res.send(tamanho)
+    // })
+});
+app.get('/sabores/:idsabor', (req,res,next) =>{
+    // res.send({
+        let sabor : any = [];
+        if(req.params.idsabor == 1){
+            sabor.push({
+                "sabor": "Calabresa",
+                "preco": 12
+            },
+            {
+                "sabor": "Quatro Queijos",
+                "preco": 15
+
+            },
+            {
+                "sabor": "Bacon",
+                "preco": 13
+            },
+            {
+                "sabor": "Chocolate",
+                "preco": 14
+
+            },
+            {
+                "sabor": "Brocolis",
+                "preco": 16
+            }
+
+            )
+
+        }
+        if(req.params.idsabor == 2){
+            sabor.push({
+                "sabor": "Calabresa",
+                "preco": 18
+            },
+            {
+                "sabor": "Quatro Queijos",
+                "preco": 21
+
+            },
+            {
+                "sabor": "Bacon",
+                "preco": 19
+            },
+            {
+                "sabor": "Chocolate",
+                "preco": 20
+
+            },
+            {
+                "sabor": "Brocolis",
+                "preco": 22
+            }
+
+            )
+
+        }
+        if(req.params.idsabor == 3){
+            sabor.push({
+                "sabor": "Calabresa",
+                "preco": 25
+            },
+            {
+                "sabor": "Quatro Queijos",
+                "preco": 28
+
+            },
+            {
+                "sabor": "Bacon",
+                "preco": 26
+            },
+            {
+                "sabor": "Chocolate",
+                "preco": 27
+
+            },
+            {
+                "sabor": "Brocolis",
+                "preco": 29
             }
 
             )
@@ -42,6 +129,102 @@ app.get('/tamanhos/:idsabor', (req,res,next) =>{
         res.send(sabor)
     // })
 });
+app.get('/cidades', (req,res,next)=>{
+    let cidade :any = [];
+    cidade.push(
+        {
+            "id": 1,
+            "name": "Jaraguá do Sul"
+        },
+        {
+            "id": 2,
+            "name": "Corupá"
+        },
+        {
+            "id": 3,
+            "name": "Guaramirim"
+        }
+    )
+    res.send(cidade)
+});
+app.get('/bairros/:idcidades', (req,res,next)=>{
+    let bairro : any = [];
+    if(req.params.idcidades == 1){
+        bairro.push(
+            {
+                "name": "Centro",
+                "value": 1.5
+            },
+            {
+                "name": "Agua Verde",
+                "value": 2.35
+            },
+            {
+                "name": "Chico de Paula",
+                "value": 3.8
+            },
+            {
+                "name": "Figueira",
+                "value": 4
+            }
+        )
+    }
+    if(req.params.idcidades == 2){
+        bairro.push(
+            {
+                "name": "Seminário",
+                "value": 6.8
+            },
+            {
+                "name": "Ano bom",
+                "value": 6.75
+            },
+            {
+                "name": "Centro",
+                "value": 6
+            }
+        )
+    }
+    if(req.params.idcidades == 3){
+        bairro.push(
+            {
+                "name": "Amizade",
+                "value": 12
+            },
+            {
+                "name": "Centro",
+                "value": 8
+            },
+            {
+                "name": "Avai",
+                "value": 7
+            },
+            {
+                "name": "Corticeira",
+                "value": 7
+            }
+        )
+    }
+    res.send(bairro)
+});
+app.post('/logon', (req,res,next) =>{
+     let userName = req.body.userName;
+     let password = req.body.password;
+    if(userName === "admin@senai" && password === "1234"){
+        res.send({
+            userName:userName,
+            password:password
+        });
+
+    }else{
+        res.send({
+            "HttpError": 404,
+            "ApiError": "1001",
+            "ErrorDescription": "",
+            "AditionalInfo": "Usuário e senha inválidos"
+        });
+    }
+})
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
 })

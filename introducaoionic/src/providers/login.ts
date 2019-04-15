@@ -4,13 +4,13 @@ import { HttpProvider } from '../providers/http';
 
 @Injectable()
 export class Login{
-    url = "http://104.196.102.231/logon";
+    url = "http://localhost:3000/logon";
 
 
     constructor(private httpProvider : HttpProvider){
     }
-        
-    
+
+
     public login (userName: string, password : string){
         // console.log(userName,password);
         // debugger;
@@ -24,9 +24,9 @@ export class Login{
         this.httpProvider.url = this.url;
 
         return this.httpProvider.post(obj)
-               
-            
-        
+
+
+
 
     }
 }
