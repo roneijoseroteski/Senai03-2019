@@ -217,12 +217,7 @@ app.post('/logon', (req,res,next) =>{
         });
 
     }else{
-        res.send({
-            "HttpError": 404,
-            "ApiError": "1001",
-            "ErrorDescription": "",
-            "AditionalInfo": "Usuário e senha inválidos"
-        });
+        res.status(401).send('Conta invalida!');
     }
 })
 app.listen(port, () => {
