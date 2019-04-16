@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Tamanho } from '../../providers/tamanhos';
 import { Sabores } from '../../providers/sabores';
 import { EntregainfoPage } from '../entregainfo/entregainfo';
+import { CadastroPage } from '../cadastro/cadastro';
 
 /**
  * Generated class for the PaginaRPage page.
@@ -57,5 +58,7 @@ export class PaginaRPage {
   telaEntrega(){
     this.navCtrl.push(EntregainfoPage);
   }
-
+  telaCadastro(){
+    this.navCtrl.push(CadastroPage);
+  }
 }

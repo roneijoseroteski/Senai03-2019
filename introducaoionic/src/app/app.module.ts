@@ -16,18 +16,21 @@ import { Login } from '../providers/login';
 
 import { PaginaRPage } from '../pages/pagina-r/pagina-r';
 import { EntregainfoPage } from '../pages/entregainfo/entregainfo';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 import { Http, HttpModule ,Headers, Response} from '@angular/http';
 import { Sabores } from '../providers/sabores';
 import { Cidade } from '../providers/cidade';
 import { Bairro } from '../providers/bairro';
 import { Tamanho } from '../providers/tamanhos';
+import { Cadastrar } from '../providers/cadastrar';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
     PaginaRPage,
-    EntregainfoPage
+    EntregainfoPage,
+    CadastroPage
   ],
   imports: [
     HttpModule,
@@ -40,7 +43,8 @@ import { Tamanho } from '../providers/tamanhos';
     HomePage,
     ListPage,
     PaginaRPage,
-    EntregainfoPage
+    EntregainfoPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,
@@ -53,6 +57,7 @@ import { Tamanho } from '../providers/tamanhos';
     Sabores,
     Cidade,
     Bairro,
+    Cadastrar,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

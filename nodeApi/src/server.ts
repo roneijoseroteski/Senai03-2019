@@ -25,13 +25,13 @@ app.get('/tamanhos', (req,res,next) =>{
                 "quantidade_sabores": 1
             },
             {
-                "id":1,
+                "id":2,
                 "name":"Média",
                 "quantidade_sabores": 2
 
             },
             {
-                "id":1,
+                "id":3,
                 "name":"Grande",
                 "quantidade_sabores": 3
             }
@@ -219,6 +219,15 @@ app.post('/logon', (req,res,next) =>{
     }else{
         res.status(401).send('Conta invalida!');
     }
+})
+app.post('/cadastro', (req,res,next)=>{
+    let nome = req.body.nome;
+    let newuser = req.body.newuser;
+    let newpassword = req.body.newpassword;
+   console.log(nome);
+   console.log(newpassword);
+   console.log(newuser);
+   res.send({msg : "Criado com sucesso"});
 })
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
