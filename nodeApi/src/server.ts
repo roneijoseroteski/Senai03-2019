@@ -1,6 +1,7 @@
 import express = require("express");
 var cors = require('cors');
 var bodyParser = require('body-parser');
+import { MySQLFactory } from './mysql/mysql_factory';
 
 
 const app: express.Application = express();
@@ -18,216 +19,173 @@ const port: number = 3000;
 app.get('/tamanhos', (req,res,next) =>{
     // res.send({
         let tamanho : any = [];
-        
-            tamanho.push({
-                "id":1,
-                "name":"Pequena",
-                "quantidade_sabores": 1
-            },
-            {
-                "id":2,
-                "name":"Média",
-                "quantidade_sabores": 2
+        let tamanhoSQL : string = 'select * from tamanhos'
+        // console.log(tamanhoSQL);
+        new MySQLFactory().getConnection().select(tamanhoSQL).subscribe(
+            (data : any) => {
+                // console.log(data.length);
 
+
+                data.forEach((element : any) => {
+                    console.log
+                    
+                    tamanho.push({
+                        id : element.idTamanhos,
+                        name : element.name,
+                        quantidade_sabores : element.quantidade_sabores
+                    })
+                });
+
+                res.send(tamanho)
             },
-            {
-                "id":3,
-                "name":"Grande",
-                "quantidade_sabores": 3
+            (error : any) =>{
+                console.log(error);
+                res.send(error);
             }
-
-            )
-
-        
-        res.send(tamanho)
+        );
     // })
 });
 app.get('/sabores/:idsabor', (req,res,next) =>{
     // res.send({
         let sabor : any = [];
-        if(req.params.idsabor == 1){
-            sabor.push({
-                "sabor": "Calabresa",
-                "preco": 12
-            },
-            {
-                "sabor": "Quatro Queijos",
-                "preco": 15
+        let saboresSQL : string = 'select * from sabores where tamanhos_idTamanhos = \''+ req.params.idsabor + '\''
+        console.log(saboresSQL);
 
-            },
-            {
-                "sabor": "Bacon",
-                "preco": 13
-            },
-            {
-                "sabor": "Chocolate",
-                "preco": 14
+    
+        new MySQLFactory().getConnection().select(saboresSQL).subscribe(
+            (data : any) => {
+                // console.log(data.length);
 
+                data.forEach((element : any) => {
+                    console.log
+                    
+                    sabor.push({
+                        sabor : element.sabor,
+                        preco : element.preco
+                    })
+                });
+
+                res.send(sabor)
+                
             },
-            {
-                "sabor": "Brocolis",
-                "preco": 16
+            (error : any) =>{
+                console.log(error);
+                res.send(error);
             }
-
-            )
-
-        }
-        if(req.params.idsabor == 2){
-            sabor.push({
-                "sabor": "Calabresa",
-                "preco": 18
-            },
-            {
-                "sabor": "Quatro Queijos",
-                "preco": 21
-
-            },
-            {
-                "sabor": "Bacon",
-                "preco": 19
-            },
-            {
-                "sabor": "Chocolate",
-                "preco": 20
-
-            },
-            {
-                "sabor": "Brocolis",
-                "preco": 22
-            }
-
-            )
-
-        }
-        if(req.params.idsabor == 3){
-            sabor.push({
-                "sabor": "Calabresa",
-                "preco": 25
-            },
-            {
-                "sabor": "Quatro Queijos",
-                "preco": 28
-
-            },
-            {
-                "sabor": "Bacon",
-                "preco": 26
-            },
-            {
-                "sabor": "Chocolate",
-                "preco": 27
-
-            },
-            {
-                "sabor": "Brocolis",
-                "preco": 29
-            }
-
-            )
-
-        }
-        res.send(sabor)
+        );
     // })
 });
 app.get('/cidades', (req,res,next)=>{
     let cidade :any = [];
-    cidade.push(
-        {
-            "id": 1,
-            "name": "Jaraguá do Sul"
+    let cidadeSQL : string = 'select * from cidades'
+    // console.log(tamanhoSQL);
+    new MySQLFactory().getConnection().select(cidadeSQL).subscribe(
+        (data : any) => {
+            // console.log(data.length);
+
+
+            data.forEach((element : any) => {
+                console.log
+                
+                cidade.push({
+                    id : element.idCidades,
+                    name : element.nome,
+                    
+                })
+            });
+
+            res.send(cidade)
         },
-        {
-            "id": 2,
-            "name": "Corupá"
-        },
-        {
-            "id": 3,
-            "name": "Guaramirim"
+        (error : any) =>{
+            console.log(error);
+            res.send(error);
         }
-    )
-    res.send(cidade)
+    );
 });
 app.get('/bairros/:idcidades', (req,res,next)=>{
     let bairro : any = [];
-    if(req.params.idcidades == 1){
-        bairro.push(
-            {
-                "name": "Centro",
-                "value": 1.5
-            },
-            {
-                "name": "Agua Verde",
-                "value": 2.35
-            },
-            {
-                "name": "Chico de Paula",
-                "value": 3.8
-            },
-            {
-                "name": "Figueira",
-                "value": 4
-            }
-        )
-    }
-    if(req.params.idcidades == 2){
-        bairro.push(
-            {
-                "name": "Seminário",
-                "value": 6.8
-            },
-            {
-                "name": "Ano bom",
-                "value": 6.75
-            },
-            {
-                "name": "Centro",
-                "value": 6
-            }
-        )
-    }
-    if(req.params.idcidades == 3){
-        bairro.push(
-            {
-                "name": "Amizade",
-                "value": 12
-            },
-            {
-                "name": "Centro",
-                "value": 8
-            },
-            {
-                "name": "Avai",
-                "value": 7
-            },
-            {
-                "name": "Corticeira",
-                "value": 7
-            }
-        )
-    }
-    res.send(bairro)
+    let bairroSQL : string = 'select * from bairros where cidades_idCidades = \''+ req.params.idcidades + '\''
+    console.log(bairroSQL);
+
+
+    new MySQLFactory().getConnection().select(bairroSQL).subscribe(
+        (data : any) => {
+            // console.log(data.length);
+
+            data.forEach((element : any) => {
+                console.log
+                
+                bairro.push({
+                    name : element.name,
+                    value : element.value
+                })
+            });
+
+            res.send(bairro)
+            
+        },
+        (error : any) =>{
+            console.log(error);
+            res.send(error);
+        }
+    );
 });
 app.post('/logon', (req,res,next) =>{
-     let userName = req.body.userName;
-     let password = req.body.password;
-    if(userName === "admin@senai" && password === "1234"){
-        res.send({
-            userName:userName,
-            password:password
-        });
+    //  let userName = req.body.userName;
+    //  let password = req.body.password;
+    // if(userName === "admin@senai" && password === "1234"){
+    //     res.send({
+    //         userName:userName,
+    //         password:password
+    //     });
 
-    }else{
-        res.status(401).send('Conta invalida!');
-    }
+    // }else{
+    //     res.status(401).send('Conta invalida!');
+    
+    let generateSQL : string = 'select * from login where login.username = \'' + req.body.userName + '\' and login.password = \'' + req.body.password + '\''
+
+    // }
+    new MySQLFactory().getConnection().select(generateSQL).subscribe(
+        (data : any) => {
+            if (!data.length || data.length != 1){
+                res.status(401).send('Conta invalida!');
+                return;
+            }
+            res.send({
+                userName : req.body.userName,
+                password : req.body.password
+            });
+            
+        },
+        (error : any) =>{
+            console.log(error);
+            res.send(error);
+        }
+    );
 })
 app.post('/cadastro', (req,res,next)=>{
-    let nome = req.body.nome;
-    let newuser = req.body.newuser;
-    let newpassword = req.body.newpassword;
-   console.log(nome);
-   console.log(newpassword);
-   console.log(newuser);
-   res.send({msg : "Criado com sucesso"});
+//     let nome = req.body.nome;
+//     let newuser = req.body.newuser;
+//     let newpassword = req.body.newpassword;
+//    console.log(nome);
+//    console.log(newpassword);
+//    console.log(newuser);
+//    res.send({msg : "Criado com sucesso"});
+
+
+
+    let cadastre : string ='insert into login(username,password,name) values(\'' + req.body.newuser + '\' ,\'' +req.body.newpassword +'\' ,\'' +req.body.nome + '\')'
+    // 
+    console.log(cadastre);
+    new MySQLFactory().getConnection().insert(cadastre).subscribe(
+        (data : any) => {
+            res.send({msg : "Criado com sucesso"});
+            return;
+        },
+        (error : any) =>{
+            res.send(error);
+        }
+    );
 })
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
