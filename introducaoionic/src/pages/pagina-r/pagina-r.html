@@ -22,7 +22,7 @@
       <ion-item >
         <ion-label>tamanho</ion-label>
           <ion-select  [(ngModel)]="idProduto" (ionChange)="clicar()">
-            <ion-option value="{{tamanho.id}}" *ngFor="let tamanho of tamanhosPizza">{{tamanho.name}}</ion-option>
+            <ion-option value="{{tamanho.id}}" *ngFor="let tamanho of listaTamanhos">{{tamanho.name}}</ion-option>
           </ion-select>
         
 

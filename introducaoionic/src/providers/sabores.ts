@@ -14,13 +14,13 @@ export class Sabores{
 
 
 
-    idtamanho : number;
+    // idtamanho : number;
 
 
 
-    public saboreseprecos(idSabor : string){
-        let urlSabor="http://104.196.102.231/sabores/" + idSabor;
-
+    public saboreseprecos(idProduto : string){
+        let urlSabor="http://localhost:3000/sabores/" + idProduto;
+        
         this.httpProvider.url = urlSabor;
         return this.httpProvider.get();
     }

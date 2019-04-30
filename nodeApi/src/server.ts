@@ -55,15 +55,16 @@ app.get('/sabores/:idsabor', (req,res,next) =>{
         new MySQLFactory().getConnection().select(saboresSQL).subscribe(
             (data : any) => {
                 // console.log(data.length);
+                console.log(data);
 
                 data.forEach((element : any) => {
-                    console.log
+                    console.log(element);
                     
                     sabor.push({
                         sabor : element.sabor,
                         preco : element.preco
                     })
-                });
+                })
 
                 res.send(sabor)
                 
