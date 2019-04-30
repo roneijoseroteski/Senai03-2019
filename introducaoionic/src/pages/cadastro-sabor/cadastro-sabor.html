@@ -1,0 +1,39 @@
+<!--
+  Generated template for the CadastroSaborPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cadastroSabor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item >
+      <ion-label>Selecione Tamanho da Pizza</ion-label>
+        <ion-select  [(ngModel)]="idProduto">
+          <ion-option value="{{t.id}}" *ngFor="let t of listaTamanhos">{{t.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Sabor</ion-label>
+      <ion-input type="text" [(ngModel)]="sabor" name="sabor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label fixed>Preço</ion-label>
+        <ion-input type="number" [(ngModel)]="preco" name="preco"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  <button ion-button color="secondary" type="button" (click)="saborCadastroForm()" block>Cadastro</button>
+</ion-content>

@@ -17,12 +17,15 @@ import { Login } from '../providers/login';
 import { PaginaRPage } from '../pages/pagina-r/pagina-r';
 import { EntregainfoPage } from '../pages/entregainfo/entregainfo';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { CadastroSaborPage } from '../pages/cadastro-sabor/cadastro-sabor';
 import { Http, HttpModule ,Headers, Response} from '@angular/http';
 import { Sabores } from '../providers/sabores';
 import { Cidade } from '../providers/cidade';
 import { Bairro } from '../providers/bairro';
 import { Tamanho } from '../providers/tamanhos';
 import { Cadastrar } from '../providers/cadastrar';
+import { ProdutoCadastro } from '../providers/cadastrarProduto';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +33,8 @@ import { Cadastrar } from '../providers/cadastrar';
     ListPage,
     PaginaRPage,
     EntregainfoPage,
-    CadastroPage
+    CadastroPage,
+    CadastroSaborPage
   ],
   imports: [
     HttpModule,
@@ -44,7 +48,8 @@ import { Cadastrar } from '../providers/cadastrar';
     ListPage,
     PaginaRPage,
     EntregainfoPage,
-    CadastroPage
+    CadastroPage,
+    CadastroSaborPage
   ],
   providers: [
     StatusBar,
@@ -58,6 +63,7 @@ import { Cadastrar } from '../providers/cadastrar';
     Cidade,
     Bairro,
     Cadastrar,
+    ProdutoCadastro,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

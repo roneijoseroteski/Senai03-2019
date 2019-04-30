@@ -22,7 +22,7 @@
       <ion-item >
         <ion-label>tamanho</ion-label>
           <ion-select  [(ngModel)]="idProduto" (ionChange)="clicar()">
-            <ion-option value="{{tamanho.id}}" *ngFor="let tamanho of listaTamanhos">{{tamanho.name}}</ion-option>
+            <ion-option value="{{tamanho.id}}" *ngFor="let tamanho of tamanhosPizza">{{tamanho.name}}</ion-option>
           </ion-select>
         
 
@@ -35,11 +35,14 @@
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button color="danger" type="submit" block (click)="telaEntrega()">Continuar</button>
+      <button ion-button color="secondary" type="submit" block (click)="telaEntrega()">Continuar</button>
     </div>
   </div>
   <div padding>
-      <button ion-button color="danger" type="submit" block (click)="telaCadastro()">cadastro</button>
+      <button ion-button color="secondary" type="submit" block (click)="telaCadastro()">cadastro</button>
+    </div>
+    <div padding>
+      <button ion-button color="secondary" type="submit" block (click)="CadastroSabores()">cadastro sabor</button>
     </div>
   
   

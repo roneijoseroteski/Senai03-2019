@@ -4,6 +4,7 @@ import { Tamanho } from '../../providers/tamanhos';
 import { Sabores } from '../../providers/sabores';
 import { EntregainfoPage } from '../entregainfo/entregainfo';
 import { CadastroPage } from '../cadastro/cadastro';
+import { CadastroSaborPage } from '../cadastro-sabor/cadastro-sabor';
 
 /**
  * Generated class for the PaginaRPage page.
@@ -61,4 +62,8 @@ export class PaginaRPage {
   telaCadastro(){
     this.navCtrl.push(CadastroPage);
   }
+  CadastroSabores(){
+    this.navCtrl.push(CadastroSaborPage);
+  }
+
 }

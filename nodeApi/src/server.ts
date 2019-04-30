@@ -147,6 +147,7 @@ app.post('/logon', (req,res,next) =>{
     // }
     new MySQLFactory().getConnection().select(generateSQL).subscribe(
         (data : any) => {
+            console.log(data.length);
             if (!data.length || data.length != 1){
                 res.status(401).send('Conta invalida!');
                 return;
@@ -187,6 +188,22 @@ app.post('/cadastro', (req,res,next)=>{
         }
     );
 })
+app.post('/saborCadastro', (req,res,next)=>{
+
+    
+    let cadastreSabor : string ='insert into sabores(sabor,preco,tamanhos_idTamanhos) values(\'' + req.body.sabor + '\' ,\'' + req.body.preco +'\' ,\'' + req.body.tamanhos_idTamanhos + '\')'
+    //                                                                                         
+    console.log(cadastreSabor);
+    new MySQLFactory().getConnection().insert(cadastreSabor).subscribe(
+        (data : any) => {
+            res.send({msg : "Criado com sucesso"});
+            return;
+        },
+        (error : any) =>{
+            res.send(error);
+        }
+    );
+    }); 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
 })
